@@ -10,6 +10,7 @@ include("./functions.jl")
 
 # Path to the training data file
 p = "training.tsv";
+pv = "verification.tsv";
 
 # Read the training data from the file. The function `read_training` is assumed to return:
 # - `strains`: A list of strain identifiers
@@ -17,6 +18,9 @@ p = "training.tsv";
 # - `data`: The main community fucoidan decomposition matrix
 # - `emtype`: A vector of total carbon per monomer type
 strains, strain_mat, data, emtype = read_training(p);
+
+# read verification data
+ver_t0, ver_t_end = read_verification(pv)
 
 # Calculate the total amount of carbon
 emtot = sum(emtype)
