@@ -1,0 +1,257 @@
+The first block gives for each co-culture type the mean C,R at time 0
+the second block is the degradation data of each co-culture at t=110[h]
+the format is: polymer_name	strains	C	R
+//
+Carbosynth FV	LCC_4|isolate_25|isolate_56	2.4107490414371835	0.5242148871801057
+Carbosynth FV	LCC_4|isolate_25|isolate_56|isolate_69	2.4532034667970137	0.5409517497527235
+Carbosynth FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	2.41234488261775	0.5450284777518869
+Carbosynth FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	2.4087522619642336	0.5542639950435364
+Carbosynth FV	isolate_69	2.3006054191583067	0.49325062110264584
+Carbosynth FV	isolate_12|isolate_40|isolate_69|isolate_94	2.384626083799	0.5341851199187847
+Carbosynth FV	isolate_12|isolate_40|isolate_94	2.59519321271884	0.5590924800578543
+Cladosiphon	LCC_4|isolate_25|isolate_56	2.0035480069025664	0.7267139497746589
+Cladosiphon	LCC_4|isolate_25|isolate_56|isolate_69	2.0874064075558434	0.7023421780860633
+Cladosiphon	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	2.0660327271505996	0.7308409643461784
+Cladosiphon	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	1.9517832020648866	0.6746009951186405
+Cladosiphon	isolate_69	2.02963904361294	0.7157879003646683
+Cladosiphon	isolate_12|isolate_40|isolate_69|isolate_94	2.05730747068382	0.7256574536821949
+Cladosiphon	isolate_12|isolate_40|isolate_94	2.0295096716828067	0.759299504232869
+Durvillea	LCC_4|isolate_25|isolate_56	0.8332398674472578	0.49601338588573446
+Durvillea	LCC_4|isolate_25|isolate_56|isolate_69	0.8696702198716736	0.49110139499133476
+Durvillea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	0.8313629561959207	0.5354799662309129
+Durvillea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	0.8376973750148959	0.5766390706450706
+Durvillea	isolate_69	0.9105114174111923	0.5352775492663313
+Durvillea	isolate_12|isolate_40|isolate_69|isolate_94	0.8525512411310947	0.5464278931399513
+Durvillea	isolate_12|isolate_40|isolate_94	0.8566774297359313	0.5249208636937965
+Ecklonia	LCC_4|isolate_25|isolate_56	0.9799111042082136	1.6490779925221988
+Ecklonia	LCC_4|isolate_25|isolate_56|isolate_69	1.0129621569760756	1.7178890453792506
+Ecklonia	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	0.9266225131725679	1.6396351465099661
+Ecklonia	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	0.9537207834359988	1.5773991767338935
+Ecklonia	isolate_69	1.0062678150921873	1.7515772313438842
+Ecklonia	isolate_12|isolate_40|isolate_69|isolate_94	0.9899129166450393	1.656820515538109
+Ecklonia	isolate_12|isolate_40|isolate_94	0.9692703549802103	1.6665803776679333
+Fucus evanesces	LCC_4|isolate_25|isolate_56	3.185143429582093	1.302632062109932
+Fucus evanesces	LCC_4|isolate_25|isolate_56|isolate_69	3.1604795130891232	1.2971321864222463
+Fucus evanesces	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	3.1640942811787838	1.2726462294097936
+Fucus evanesces	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	3.1762823546777335	1.3467217444054644
+Fucus evanesces	isolate_69	3.2878742256204867	1.3969519448225007
+Fucus evanesces	isolate_12|isolate_40|isolate_69|isolate_94	3.2055190480748936	1.3335154420525746
+Fucus evanesces	isolate_12|isolate_40|isolate_94	3.3653880036832247	1.3698135836924126
+Fucus serratus	LCC_4|isolate_25|isolate_56	0.37406116834480735	0.624417056846105
+Fucus serratus	LCC_4|isolate_25|isolate_56|isolate_69	0.394227235433298	0.6665670695104594
+Fucus serratus	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	0.4055664547291657	0.625881070190854
+Fucus serratus	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	0.39610478032617236	0.6838806703946599
+Fucus serratus	isolate_69	0.3962961967151577	0.6469204688703285
+Fucus serratus	isolate_12|isolate_40|isolate_69|isolate_94	0.39164246813964265	0.6304913761166375
+Fucus serratus	isolate_12|isolate_40|isolate_94	0.38327720936353565	0.8728178397468467
+Laminaria hyperborea	LCC_4|isolate_25|isolate_56	4.2583109035141105	0.22547268999749434
+Laminaria hyperborea	LCC_4|isolate_25|isolate_56|isolate_69	4.279408611277613	0.2482825112409658
+Laminaria hyperborea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	4.315192114694007	0.2544401615712927
+Laminaria hyperborea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	4.279893398354954	0.25313105115464946
+Laminaria hyperborea	isolate_69	4.103840040237787	0.2177815833127209
+Laminaria hyperborea	isolate_12|isolate_40|isolate_69|isolate_94	4.34722256288072	0.24031061121717326
+Laminaria hyperborea	isolate_12|isolate_40|isolate_94	4.4484572349995695	0.23922626401146713
+Marinova FV	LCC_4|isolate_25|isolate_56	2.6952201494848835	0.6663804236452882
+Marinova FV	LCC_4|isolate_25|isolate_56|isolate_69	2.838276249123123	0.7242510118015103
+Marinova FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	2.7998347550039533	0.7012021876256364
+Marinova FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	2.999699050795017	0.7933699720720484
+Marinova FV	isolate_69	2.845976168508624	0.726461255006266
+Marinova FV	isolate_12|isolate_40|isolate_69|isolate_94	2.8707669336597768	0.7241921290106044
+Marinova FV	isolate_12|isolate_40|isolate_94	3.0484879230347564	0.774444204959098
+Sigma FV	LCC_4|isolate_25|isolate_56	3.113904954791423	0.6970481798338664
+Sigma FV	LCC_4|isolate_25|isolate_56|isolate_69	3.425489607537513	0.756535555986631
+Sigma FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	3.1673917277682566	0.7171683741533222
+Sigma FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	3.37719453678055	0.7063864770029625
+Sigma FV	isolate_69	3.25987986331063	0.7073656361229073
+Sigma FV	isolate_12|isolate_40|isolate_69|isolate_94	3.3165882823205997	0.7277077020485418
+Sigma FV	isolate_12|isolate_40|isolate_94	3.16581705248459	0.7503553229497717
+//
+Carbosynth FV	LCC_4|isolate_25|isolate_56	2.1747342902125886	0.3062461662549621
+Carbosynth FV	LCC_4|isolate_25|isolate_56	2.1763810496584624	0.323268073771322
+Carbosynth FV	LCC_4|isolate_25|isolate_56	2.1757931499100436	0.32992053627461204
+Carbosynth FV	LCC_4|isolate_25|isolate_56|isolate_69	2.2835926018607666	0.43754116181532554
+Carbosynth FV	LCC_4|isolate_25|isolate_56|isolate_69	2.2721109897597715	0.44206531155214446
+Carbosynth FV	LCC_4|isolate_25|isolate_56|isolate_69	2.285723921937395	0.4352207307333351
+Carbosynth FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	2.3009193169282502	0.46402600134542094
+Carbosynth FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	2.3085038423129762	0.4591801694950932
+Carbosynth FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	2.300561505847703	0.45051021371525424
+Carbosynth FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	2.2253406044279265	0.37570868396982826
+Carbosynth FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	2.2497495585872396	0.40891294188391436
+Carbosynth FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	2.2482019935472186	0.40590525451132964
+Carbosynth FV	isolate_69	1.0123384163274167	0.3548294477986196
+Carbosynth FV	isolate_69	1.0717185458392968	0.3465945813749401
+Carbosynth FV	isolate_69	1.0210954367613967	0.32204222269644456
+Carbosynth FV	isolate_12|isolate_40|isolate_69|isolate_94	1.0602426486434702	0.40641311517898987
+Carbosynth FV	isolate_12|isolate_40|isolate_69|isolate_94	1.1142137377562802	0.3953319613349574
+Carbosynth FV	isolate_12|isolate_40|isolate_69|isolate_94	1.0550204099054001	0.4014655101567643
+Carbosynth FV	isolate_12|isolate_40|isolate_94	0.5827912312639798	0.2285272923379556
+Carbosynth FV	isolate_12|isolate_40|isolate_94	0.48220549295580994	0.21027435567903463
+Carbosynth FV	isolate_12|isolate_40|isolate_94	0.40159898201327016	0.20160593994977283
+Cladosiphon	LCC_4|isolate_25|isolate_56	1.6663865286920885	0.5795594701558332
+Cladosiphon	LCC_4|isolate_25|isolate_56	1.6284372472404984	0.556711857982944
+Cladosiphon	LCC_4|isolate_25|isolate_56	1.5887636745880365	0.5546145005633565
+Cladosiphon	LCC_4|isolate_25|isolate_56|isolate_69	1.8054581624979105	0.6043992307410171
+Cladosiphon	LCC_4|isolate_25|isolate_56|isolate_69	1.8046390551367895	0.601660996496213
+Cladosiphon	LCC_4|isolate_25|isolate_56|isolate_69	1.5487689501265594	0.53993025893565
+Cladosiphon	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	1.8053437213389705	0.6268050307151589
+Cladosiphon	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	1.5826622489670756	0.5617844757497403
+Cladosiphon	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	1.7259237065486146	0.5565294700645802
+Cladosiphon	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	1.5658529571943676	0.5083155038699386
+Cladosiphon	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	1.5882890512800467	0.5024283440141123
+Cladosiphon	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	1.5716949695780635	0.5053932963692398
+Cladosiphon	isolate_69	0.1935634890139699	0.0980393334964943
+Cladosiphon	isolate_69	0.2306012966690798	0.07399169751449797
+Cladosiphon	isolate_69	0.21447048031650984	0.06941925903879688
+Cladosiphon	isolate_12|isolate_40|isolate_69|isolate_94	0.30759517646548007	0.11863701542484809
+Cladosiphon	isolate_12|isolate_40|isolate_69|isolate_94	0.17663615912071018	0.08786625704964013
+Cladosiphon	isolate_12|isolate_40|isolate_69|isolate_94	0.07602834184075014	0.0558385261271646
+Cladosiphon	isolate_12|isolate_40|isolate_94	0.01994302766118672	0.04588520241941382
+Cladosiphon	isolate_12|isolate_40|isolate_94	0.0	0.07536958931402032
+Cladosiphon	isolate_12|isolate_40|isolate_94	0.0	0.03640799499760607
+Durvillea	LCC_4|isolate_25|isolate_56	0.7528297721521493	0.2518251353368029
+Durvillea	LCC_4|isolate_25|isolate_56	0.7555698005019601	0.25853499470832375
+Durvillea	LCC_4|isolate_25|isolate_56	0.7559093195600713	0.2609948967972787
+Durvillea	LCC_4|isolate_25|isolate_56|isolate_69	0.8050778819227965	0.3171612451507385
+Durvillea	LCC_4|isolate_25|isolate_56|isolate_69	0.8000379548023314	0.31366785732491154
+Durvillea	LCC_4|isolate_25|isolate_56|isolate_69	0.8068050653725868	0.32631895864707794
+Durvillea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	0.7699626622754706	0.37764875959037475
+Durvillea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	0.765992542875992	0.3893187138476311
+Durvillea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	0.7659243523257093	0.3994998644056442
+Durvillea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	0.7518696563276085	0.37396321138698996
+Durvillea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	0.7423190660017337	0.37790443710835175
+Durvillea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	0.7420128835742897	0.36594435679525955
+Durvillea	isolate_69	0.31556223947476936	0.11441787351139411
+Durvillea	isolate_69	0.27869510816677934	0.09556834327029917
+Durvillea	isolate_69	0.21903676135474137	0.07757943129529657
+Durvillea	isolate_12|isolate_40|isolate_69|isolate_94	0.13511430834740767	0.29501152089812693
+Durvillea	isolate_12|isolate_40|isolate_69|isolate_94	0.11287149767692972	0.3175156555362439
+Durvillea	isolate_12|isolate_40|isolate_69|isolate_94	0.22586348075493967	0.30222441912824544
+Durvillea	isolate_12|isolate_40|isolate_94	0.21802090122738227	0.17183817792929265
+Durvillea	isolate_12|isolate_40|isolate_94	0.15645032115569735	0.18421894340198525
+Durvillea	isolate_12|isolate_40|isolate_94	0.2331097106896003	0.1941422323331723
+Ecklonia	LCC_4|isolate_25|isolate_56	0.9056651564206123	0.8116748558395646
+Ecklonia	LCC_4|isolate_25|isolate_56	0.9083617259542716	0.861464324814074
+Ecklonia	LCC_4|isolate_25|isolate_56	0.9070742277002202	0.8507516114295482
+Ecklonia	LCC_4|isolate_25|isolate_56|isolate_69	0.9597154256300099	1.2046532055070331
+Ecklonia	LCC_4|isolate_25|isolate_56|isolate_69	0.9557790745285054	1.1999683397265544
+Ecklonia	LCC_4|isolate_25|isolate_56|isolate_69	0.9571724064656987	1.1991849949288578
+Ecklonia	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	0.8871151725939319	1.1285165756939803
+Ecklonia	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	0.8904335896095342	1.166828400562942
+Ecklonia	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	0.8892264085130759	1.1716728336855984
+Ecklonia	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	0.8957272417400236	0.9197540360087116
+Ecklonia	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	0.8960971925917964	0.8706005140417126
+Ecklonia	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	0.8971940353545682	0.8798723843116925
+Ecklonia	isolate_69	0.48307992175627334	1.0995038762029665
+Ecklonia	isolate_69	0.46256273562450434	1.117191932200491
+Ecklonia	isolate_69	0.4652255560592343	1.1032405631387976
+Ecklonia	isolate_12|isolate_40|isolate_69|isolate_94	0.4698069291568423	1.1000755063111645
+Ecklonia	isolate_12|isolate_40|isolate_69|isolate_94	0.46818640998059635	1.091295443839733
+Ecklonia	isolate_12|isolate_40|isolate_69|isolate_94	0.4810499601037843	1.1066196306934863
+Ecklonia	isolate_12|isolate_40|isolate_94	0.36823685937465334	0.740228401637516
+Ecklonia	isolate_12|isolate_40|isolate_94	0.38674876242554634	0.8456964246955821
+Ecklonia	isolate_12|isolate_40|isolate_94	0.35824029367923627	0.8324360459901321
+Fucus evanesces	LCC_4|isolate_25|isolate_56	2.900477783565364	0.2647728576042492
+Fucus evanesces	LCC_4|isolate_25|isolate_56	2.912465994506696	0.2214710518947875
+Fucus evanesces	LCC_4|isolate_25|isolate_56	2.8935291140459443	0.19186504941977323
+Fucus evanesces	LCC_4|isolate_25|isolate_56|isolate_69	3.1136950888114514	1.0430995282059747
+Fucus evanesces	LCC_4|isolate_25|isolate_56|isolate_69	3.115261367367913	1.0348017483909149
+Fucus evanesces	LCC_4|isolate_25|isolate_56|isolate_69	3.115738314906811	1.0363747581031792
+Fucus evanesces	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	3.132078772931288	1.1053689549463042
+Fucus evanesces	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	3.133454055068645	1.1150210815823356
+Fucus evanesces	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	3.1333526025873963	1.1165000969364025
+Fucus evanesces	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	2.9371363361605094	0.2901679470682571
+Fucus evanesces	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	2.9217066757066514	0.3136151741673587
+Fucus evanesces	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	2.9386320539861654	0.3218147912324249
+Fucus evanesces	isolate_69	1.034866081061217	1.0863992609516875
+Fucus evanesces	isolate_69	1.0969313807711267	1.117698413675779
+Fucus evanesces	isolate_69	1.0646572370507266	1.1094791584561015
+Fucus evanesces	isolate_12|isolate_40|isolate_69|isolate_94	1.0699002607411137	1.1048598004881145
+Fucus evanesces	isolate_12|isolate_40|isolate_69|isolate_94	1.0093753068526738	1.083461191472376
+Fucus evanesces	isolate_12|isolate_40|isolate_69|isolate_94	1.0446888297590537	1.098469416288842
+Fucus evanesces	isolate_12|isolate_40|isolate_94	0.47158985187041447	0.13539114721840367
+Fucus evanesces	isolate_12|isolate_40|isolate_94	0.3441384854723948	0.18583666584156297
+Fucus evanesces	isolate_12|isolate_40|isolate_94	0.33558213772943457	0.1249926851855026
+Fucus serratus	LCC_4|isolate_25|isolate_56	0.33361589986958406	0.4436288626012057
+Fucus serratus	LCC_4|isolate_25|isolate_56	0.33505854497673876	0.43753590035089407
+Fucus serratus	LCC_4|isolate_25|isolate_56	0.33281175055140305	0.4315951905408752
+Fucus serratus	LCC_4|isolate_25|isolate_56|isolate_69	0.3792442480635763	0.5947456154299389
+Fucus serratus	LCC_4|isolate_25|isolate_56|isolate_69	0.3805308461352196	0.5979250919243094
+Fucus serratus	LCC_4|isolate_25|isolate_56|isolate_69	0.37757986582835323	0.5871922276802904
+Fucus serratus	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	0.3937878231432221	0.5495158259932675
+Fucus serratus	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	0.3948338907031467	0.5382188525142784
+Fucus serratus	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	0.3943981090745768	0.5498082804575382
+Fucus serratus	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	0.3604966261626554	0.4992473201095922
+Fucus serratus	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	0.3605679278050666	0.49164992181409173
+Fucus serratus	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	0.35980029679489023	0.5057910871001132
+Fucus serratus	isolate_69	0.2985534453399292	0.4166897880560489
+Fucus serratus	isolate_69	0.2934544279964417	0.40386587976571225
+Fucus serratus	isolate_69	0.2918522440175007	0.38160491282888614
+Fucus serratus	isolate_12|isolate_40|isolate_69|isolate_94	0.27142222430670665	0.4804748774207646
+Fucus serratus	isolate_12|isolate_40|isolate_69|isolate_94	0.29278490882050867	0.5008405029927429
+Fucus serratus	isolate_12|isolate_40|isolate_69|isolate_94	0.28707821199148265	0.48792397047846797
+Fucus serratus	isolate_12|isolate_40|isolate_94	0.06702269206401168	0.5803130627405958
+Fucus serratus	isolate_12|isolate_40|isolate_94	0.05976761947126763	0.5993672487220506
+Fucus serratus	isolate_12|isolate_40|isolate_94	0.06643252941487865	0.6011140038358559
+Laminaria hyperborea	LCC_4|isolate_25|isolate_56	4.241679831990501	0.07358075706772832
+Laminaria hyperborea	LCC_4|isolate_25|isolate_56	4.240222295196888	0.0625069795651133
+Laminaria hyperborea	LCC_4|isolate_25|isolate_56	4.240139850331532	0.0738023186147886
+Laminaria hyperborea	LCC_4|isolate_25|isolate_56|isolate_69	4.269494176409379	0.19019265990930104
+Laminaria hyperborea	LCC_4|isolate_25|isolate_56|isolate_69	4.266109614147741	0.19466428123347662
+Laminaria hyperborea	LCC_4|isolate_25|isolate_56|isolate_69	4.268659132082224	0.18698731590130802
+Laminaria hyperborea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	4.3038610336727485	0.20477328364023806
+Laminaria hyperborea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	4.297206631398828	0.21024679349119713
+Laminaria hyperborea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	4.301593920140925	0.20740357959155425
+Laminaria hyperborea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	4.266482630145576	0.1628167655006535
+Laminaria hyperborea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	4.2634295486836775	0.15237182491573067
+Laminaria hyperborea	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	4.265550576831955	0.15254700790822287
+Laminaria hyperborea	isolate_69	0.0	0.15195361404079397
+Laminaria hyperborea	isolate_69	0.14804440975672728	0.154600084020394
+Laminaria hyperborea	isolate_69	0.0	0.1602757068329792
+Laminaria hyperborea	isolate_12|isolate_40|isolate_69|isolate_94	0.4003719909229	0.19324311591963356
+Laminaria hyperborea	isolate_12|isolate_40|isolate_69|isolate_94	0.07347742886600983	0.19525396585832447
+Laminaria hyperborea	isolate_12|isolate_40|isolate_69|isolate_94	0.1775195615615104	0.1952271511491744
+Laminaria hyperborea	isolate_12|isolate_40|isolate_94	0.07669330527730978	0.09686958619535126
+Laminaria hyperborea	isolate_12|isolate_40|isolate_94	0.07250236197792947	0.09443965622542702
+Laminaria hyperborea	isolate_12|isolate_40|isolate_94	0.17693850234912922	0.09659240155086679
+Marinova FV	LCC_4|isolate_25|isolate_56	2.4055072351365614	0.38839172089984875
+Marinova FV	LCC_4|isolate_25|isolate_56	2.3986012214812686	0.3990291053414098
+Marinova FV	LCC_4|isolate_25|isolate_56	2.4088504033270177	0.4055057929463183
+Marinova FV	LCC_4|isolate_25|isolate_56|isolate_69	2.6027781242691193	0.5899888476197543
+Marinova FV	LCC_4|isolate_25|isolate_56|isolate_69	2.615793858553372	0.6044754184584246
+Marinova FV	LCC_4|isolate_25|isolate_56|isolate_69	2.606938929830135	0.5986811056938905
+Marinova FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	2.6740063731292945	0.6141960620823793
+Marinova FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	2.6661532383879343	0.6028309679890234
+Marinova FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	2.666047028370491	0.5992619376881618
+Marinova FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	2.831933319450818	0.6027686617227298
+Marinova FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	2.825989634049422	0.6017205445843191
+Marinova FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	2.8242119484065054	0.6133656483757858
+Marinova FV	isolate_69	1.2804469412656538	0.5134245142202354
+Marinova FV	isolate_69	1.3049987466849737	0.5379552770676097
+Marinova FV	isolate_69	1.2212737276302539	0.5361331080779788
+Marinova FV	isolate_12|isolate_40|isolate_69|isolate_94	1.4111184553036067	0.5643467970506315
+Marinova FV	isolate_12|isolate_40|isolate_69|isolate_94	1.4140291527296567	0.5513053537856749
+Marinova FV	isolate_12|isolate_40|isolate_69|isolate_94	1.3783846857463569	0.572425118451462
+Marinova FV	isolate_12|isolate_40|isolate_94	0.6990773506429862	0.32236393014133874
+Marinova FV	isolate_12|isolate_40|isolate_94	0.8206034259210964	0.35942800856950996
+Marinova FV	isolate_12|isolate_40|isolate_94	0.7199808686815565	0.33672477230903036
+Sigma FV	LCC_4|isolate_25|isolate_56	2.920516469807938	0.4073320111494339
+Sigma FV	LCC_4|isolate_25|isolate_56	2.918191191203283	0.37780445991505796
+Sigma FV	LCC_4|isolate_25|isolate_56	2.933938913944699	0.41064713398644936
+Sigma FV	LCC_4|isolate_25|isolate_56|isolate_69	3.322178825160085	0.6686569226497339
+Sigma FV	LCC_4|isolate_25|isolate_56|isolate_69	3.330823324312106	0.6701240682861787
+Sigma FV	LCC_4|isolate_25|isolate_56|isolate_69	3.3226562183765758	0.6623155874519343
+Sigma FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	3.105627435019499	0.6487071447173499
+Sigma FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	3.1052094274309407	0.6575903258205766
+Sigma FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_69|isolate_94	3.1031745672561866	0.6518967120057323
+Sigma FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	3.266497644248707	0.5488145998386942
+Sigma FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	3.2635648916574582	0.5674900541725816
+Sigma FV	LCC_4|isolate_12|isolate_25|isolate_40|isolate_56|isolate_94	3.26141936774665	0.5448098016872351
+Sigma FV	isolate_69	1.55198185671582	0.5695123693795032
+Sigma FV	isolate_69	1.6066470309061098	0.5673787738114375
+Sigma FV	isolate_69	1.51432637367744	0.5575605684094362
+Sigma FV	isolate_12|isolate_40|isolate_69|isolate_94	1.5846190996664697	0.6378673788573288
+Sigma FV	isolate_12|isolate_40|isolate_69|isolate_94	1.6590874899226997	0.6358826221236813
+Sigma FV	isolate_12|isolate_40|isolate_69|isolate_94	1.5813897726970096	0.6262714958378797
+Sigma FV	isolate_12|isolate_40|isolate_94	0.18527809245798021	0.37821824744678645
+Sigma FV	isolate_12|isolate_40|isolate_94	0.20025264973302992	0.3886000786103594
+Sigma FV	isolate_12|isolate_40|isolate_94	0.10700688195269992	0.3462259157044288
