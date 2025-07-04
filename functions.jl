@@ -154,7 +154,7 @@ rsquare(y::Vector{Float64}, ŷ::Vector{Float64}) = 1 - fvu(y,ŷ)
 
 
 
-function main(strain_mat, y, data, nstrains)
+function main(strain_mat, y, data, emtot, nstrains)
 
     # init model parameters
     par0 = [ones(length(mono[:])); 1.0; 1.0]

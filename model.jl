@@ -1,16 +1,16 @@
 using Statistics
 using LsqFit
 using DataFrames
-
-
 # source function definitions
 include("./functions.jl")
+
+
+### fit. --------------------------------------------------------------------------------------------
 
 ## read training data. ------------------------------------------------------------------------------
 
 # Path to the training data file
 p = "training.tsv";
-pv = "verification.tsv";
 
 # Read the training data from the file. The function `read_training` is assumed to return:
 # - `strains`: A list of strain identifiers
@@ -18,9 +18,6 @@ pv = "verification.tsv";
 # - `data`: The main community fucoidan decomposition matrix
 # - `emtype`: A vector of total carbon per monomer type
 strains, strain_mat, data, emtype = read_training(p);
-
-# read verification data
-ver_t0, ver_t_end = read_verification(pv)
 
 # Calculate the total amount of carbon
 emtot = sum(emtype)
@@ -64,12 +61,74 @@ m1sm = [mean(m1s[i:(i + 2)]) for i in 1:3:length(m1s)]
 xn = [x ./ emtype for x in eachrow(data)]
 y = reduce(hcat, xn)' |> collect
 
-
-## fit. ---------------------------------------------------------------------------------------------
-
 # only train on communities of size <= nstrains
 for i in 1:7
     println("maximal community size: ", i)
-    main(strain_mat, y, data, i)
+    r2, m_mult, m_mono, m_tot = main(strain_mat, y, data, emtot, i)
     println("")
 end
+
+# prepare output dataframe
+nstrains = 3
+r2, m_mult, m_mono, m_tot = main(strain_mat, y, data, emtot, nstrains)
+
+begin
+    local ss = [join(strains[x], '|') for x in eachrow(strain_mat)]
+    local fp = strain_mat * m_mono[2]
+    local pt = hill(fp, m_mono[3]...)
+    local fp2 = strain_mat * m_tot[2]
+    local pt2 = hill(fp2, m_tot[3]...) .* sum(emtype)
+    pt[:, 1] = pt[:, 1] .* emtype[1]
+    pt[:, 2] = pt[:, 2] .* emtype[2]
+    odf1 = DataFrame(
+        type = "training", polymer = "Sigma FV", strain = ss,
+        obsC = data[:, 1], obsR = data[:, 2], obsTot = sum(data, dims = 2)[:],
+        predC = pt[:, 1], predR = pt[:, 2], predTotOnly = pt2,
+        training = (sum(strain_mat, dims = 2) .<= nstrains)[:]
+    )
+end
+
+
+## verification. ------------------------------------------------------------------------------------
+
+# read verification data
+p2 = "verification.tsv";
+t0d, vt1 = read_verification(p2);
+obsv = [sum(parse.(Float64, x[3:4])) for x in vt1];
+obsvC = [parse(Float64, x[3]) for x in vt1];
+obsvR = [parse(Float64, x[4]) for x in vt1];
+vS = [x[2] for x in vt1];
+vP = [x[1] for x in vt1];
+predv = Float64[];
+predvto = Float64[];
+pvC = Float64[];
+pvR = Float64[];
+xtemp = zeros(Bool, length(strains));
+for i in eachindex(vt1)
+    v = vt1[i]
+    etv = t0d[v[1]][v[2]]
+    xi = [s2i[k] for k in split(v[2], '|')]
+    xtemp[xi] .= true
+    prparts = hill(xtemp' * m_mono[2], m_mono[3]...)[:] .* etv
+    pr = prparts |> sum
+    pr2 = hill(transpose(xtemp) * m_tot[2], m_tot[3]...) * sum(etv)
+    push!(pvC, prparts[1])
+    push!(pvR, prparts[2])
+    push!(predv, pr)
+    push!(predvto, pr2)
+    xtemp .= false
+end;
+odf2 = DataFrame(
+    type = "verification", polymer = vP, strain = vS,
+    obsC = obsvC, obsR = obsvR, obsTot = obsv,
+    predC = pvC, predR = pvR, predTotOnly = predvto,
+    training = false
+);
+
+# overall prediction data frame
+odf = vcat(odf1, odf2)
+i = .!odf.training .&& odf.type .== "verification"
+a = odf.predC[i] + odf.predR[i]
+b = odf.obsTot[i]
+
+scatter(a, b)
