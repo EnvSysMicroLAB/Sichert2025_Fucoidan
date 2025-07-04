@@ -1,8 +1,8 @@
-# using WGLMakie
+using GLMakie
 using Statistics
 using LsqFit
 using Random: seed!
-using Colors
+using GLMakie.Colors
 using DataFrames
 """
     fx(br, x)
@@ -30,43 +30,6 @@ function fx(br, x)
     end
     return o
 end
-"""
-    obj(b, p)
-b - taylor-series coefficient vector
-b is split evenly into bc and br representing common and rare model coefficients
-bc[1:nstrains] - first order terms
-bc[nstrains+1:end] - second order terms
-p[1] = strain_mat
-p[2] = emtype
-p[3] = observed data
-"""
-# function obj(b, p)
-#     xmat = p[1] # strain mat
-#     emtype = p[2] # polymer bond frequencies: [C, R]
-#     obs = p[3] # observed degradation
-#     blen = sum(1:size(xmat, 2))
-#     bc = b[1:blen]
-#     br = b[blen+1:end]
-#     pred = zeros(Float64, size(xmat, 1), 2)
-#     for i in axes(xmat, 1)
-#         pred[i, 1] = fx(bc, xmat[i, :]) * emtype[1]
-#         pred[i, 2] = fx(br, xmat[i, :]) * emtype[2]
-#     end
-#     fvu1 = fvu(obs[:, 1], pred[:, 1])
-#     fvu2 = fvu(obs[:, 2], pred[:, 2])
-#     return sqrt((fvu1^2 + fvu2^2)/2)
-# end;
-# function fit_model(data, strain_mat, emtype)
-#     _p = (strain_mat, emtype, data)
-#     Random.seed!(1234)
-#     vlen = sum(1:size(strain_mat, 2)) * 2
-#     # x0 = rand(Float64, vlen)
-#     x0 = zeros(Float64, vlen)
-#     optf = OptimizationFunction(obj, Optimization.AutoFiniteDiff())
-#     prob = OptimizationProblem(optf, x0, _p)
-#     sol = solve(prob, BFGS())
-#     return sol
-# end
 function read_training(p)
     function flocal(v, sd)
         out = zeros(Bool, length(sd))
@@ -182,6 +145,18 @@ function bf2y(bf)
     end
     return o
 end
+function fit_to_nstrains(nstrains, mono, m1sm, strain_mat, y)
+    par0 = [ones(length(mono[:])); 1.0; 1.0]
+    par0t = [m1sm; 1; 5]
+    lb = zeros(length(par0))
+    hb = ones(length(par0))
+    hb[end-1:end] .= Inf
+    mfi = sum(strain_mat, dims=2)[:] .<= nstrains
+    sol = curve_fit(monofit, strain_mat[mfi, :][:], y[mfi, :][:], par0, lower=lb, upper=hb)
+    par2 = reshape(coef(sol)[1:end-2], :, 2)
+    par1 = coef(sol)[end-1:end]
+    return sol, par1, par2
+end
 const clrs = parse.(Colorant, ["#003a7d", "#008dff", "#ff73b6", "#c701ff", "#4ecb8d", "#ff9d3a", "#f9e858", "#d83034", :transparent])
 
 p = "training.tsv";
@@ -272,140 +247,95 @@ odf2 = DataFrame(type="verification", polymer=vP, strain=vS,
     predC=pvC, predR=pvR, predTotOnly=predvto,
     training=false);
 
-# # write output
-# odf = vcat(odf1, odf2);
-# od = "output_final_may2024"
-# !isdir(od) && mkdir(od)
-# open("$od/obs_pred_train_and_verify_combined.tsv", "w") do io
-#     println(io, join(names(odf), '\t'))
-#     for i ∈ axes(odf, 1)
-#         println(io, join(odf[i, :], '\t'))
-#     end
-# end;
-# open("$od/w_n3.mat", "w") do iow
-#     println(iow, "model: (Σx)^n / (km^n + (Σx)^n)")
-#     println(iow, "n = $(par1[2])")
-#     println(iow, "km = $(par1[1])")
-#     println(iow, "---")
-#     println(iow, "strain\tC\tR")
-#     for i ∈ axes(par2, 1)
-#         println(iow, strains[i], '\t', par2[i, 1], '\t', par2[i, 2])
-#     end
-# end
+
+# r2
+ver_strain_mat = zeros(Bool, length(vt1), 7)
+ver_msize = Vector{Vector{Float64}}(undef, length(vt1))
+for i in eachindex(vt1)
+    v = vt1[i]
+    etv = t0d[v[1]]
+    mFuc = mean(first.(values(etv)))
+    mRare = mean(getindex.(values(etv),2))
+    ver_msize[i] = [mFuc, mRare]
+    xi = [s2i[k] for k in split(v[2], '|')]
+    ver_strain_mat[i,xi] .= true
+    xtemp .= false
+end
+d = sum(data,dims=2)[:]
+r2 = zeros(Float64,7, 2)
+function calc_r2(obs,pred)
+    ȳ = mean(obs)
+    sstot = sum((obs .- ȳ).^2)
+    ssres = sum((pred .- obs).^2)
+    return 1 - (ssres/sstot)
+end
+for n in 1:7
+    sol, sp1, sp2 =  fit_to_nstrains(n, mono, m1sm, strain_mat, y)
+    tpred = hill1(strain_mat * sp2, sp1) * emtype
+    vpred_raw = hill1(ver_strain_mat * sp2, sp1)
+    vpred = [sum(vpred_raw[i] * ver_msize[i]) for i in eachindex(ver_msize)]
+    r2[n, 1] = calc_r2(d,tpred)
+    r2[n, 2] = calc_r2(obsv,vpred)
+end
+
 
 # first part of plot
-browser_display()
 begin
-    f = Figure(size=(1000, 700))
-    gl1 = GridLayout(f[1:2, 1])
-    # gl2 = GridLayout(f[2, 1])
-    gl3 = GridLayout(f[3, 1])
-    ax0 = Axis(gl1[1, 2], xlabel="C [%]", ylabel="R [%]")
-    ax4 = Axis(gl1[1, 3], xlabel="Predicted", ylabel="Observed", title="Multiplicative\ninit")
-    ax5 = Axis(gl1[1, 4], xlabel="Predicted", title="multiplicative\noptimized")
-    ax6 = Axis(gl1[2, 2], xlabel="C [%]", ylabel="R [%]")
-    ax7 = Axis(gl1[2, 3], xlabel="Sum of individual activities", ylabel="Observed", title="Additive\ninit")
-    ax = Axis(gl1[2, 4], xlabel="Sum of individual activities", title="Additive\noptimized")
-    ax2 = Axis(gl3[1, 1], xlabel="Observed", ylabel="Predicted", title="Training")
-    ax3 = Axis(gl3[1, 2], xlabel="Observed", ylabel="Predicted", title="Verification")
-    hideydecorations!(ax5, ticks=false, grid=false)
-    hideydecorations!(ax, ticks=false, grid=false)
+
+    f = Figure(size=(1500, 400), fontsize=20)
+    gl1 = GridLayout(f[1, 1])
+    gl2 = GridLayout(f[1, 2])
+    gl3 = GridLayout(f[1, 3])
+    gl4 = GridLayout(f[1, 4])
+    ax1 = Axis(gl1[1, 1], xlabel="C [%]", ylabel="R [%]", title="Strain\nparameter optimization")
+    ax2 = Axis(gl2[1, 1], xlabel="Sum of individual activities", ylabel="Observed proportion degraded", title="Monoculture\nparameters")
+    ax3 = Axis(gl3[1, 1], xlabel="Sum of individual activities", title="Optimized\nparameters")
+    ax4 = Axis(gl4[1, 1], xlabel="maximal community size", ylabel=rich("R",superscript("2")))
+    # parameter change
     pnts = [(Point2f(mono[i, :] .* 100), Point2f(par2[i, :] .* 100)) for i in axes(mono, 1)]
-    pnts2 = [(Point2f(mono[i, :] .* 100), Point2f(par3[i, :] .* 100)) for i in axes(mono, 1)]
-    linesegments!(ax6, pnts, color=:lightgrey, linewidth=5)
-    linesegments!(ax0, pnts2, color=:lightgrey, linewidth=5)
-    scatter!(ax0, par3 .* 100, color=:black, strokewidth=3, markersize=10)
-    scatter!(ax6, par2 .* 100, color=:black, strokewidth=3, markersize=10)
-    limits!(ax0, 0, 100, 0, 100)
-    limits!(ax6, 0, 100, 0, 100)
+    linesegments!(ax1, pnts, color=:lightgrey, linewidth=3)
+    scatter!(ax1, mono .* 100, color=:transparent, strokewidth=3, markersize=10, label="Monoculture\nparameter\n")
+    scatter!(ax1, par2 .* 100, color=:black, strokewidth=3, markersize=10, label="Optimized\nparameter")
+    limits!(ax1, 0, 100, 0, 100)
+    Legend(gl1[1,2], ax1; rowgap=30)
+    colgap!(f.layout,1,30)
+    colsize!(f.layout, 1, 410)
+    # influence on fit
     clr = Vector{Symbol}(undef, length(x[:]))
     clr[axes(x, 1)] .= :grey
     clr[size(x, 1)+1:end] .= :orange
-    # multiplicative
-    ym = mm(strain_mat, mono)
-    scatter!(ax4, ym[:], y[:], color=clr)
-    ablines!(ax4, 0, 1)
-    scatter!(ax5, mm(strain_mat, par3)[:], y[:], color=clr)
-    ablines!(ax5, 0, 1)
     x2 = strain_mat * par2
     x3 = strain_mat * mono
     xt = 0:0.01:maximum(x2[:])
     yt = hill1(xt, par1)
-    scatter!(ax, x2[:], y[:], color=clr)
-    scatter!(ax7, x3[:], y[:], color=clr)
-    lines!(ax, xt, yt, color=:black, linewidth=5)
-    lines!(ax7, xt, yt, color=:black, linewidth=5)
-    linkaxes!(ax0, ax6)
-    obs = sum(data, dims=2)[:]
-    pt = hill1(x2, par1)
-    pt[:, 1] = pt[:, 1] .* emtype[1]
-    pt[:, 2] = pt[:, 2] .* emtype[2]
-    pred = sum(pt, dims=2)[:]
-    scatter!(ax2, obs, pred,
-        color=:black,
-        markersize=15,
-        strokecolor=:white,
-        strokewidth=1)
-    ablines!(ax2, 0, 1,
-        color=:black,
-        linewidth=5)
-    # verification
-    scatter!(ax3, obsv, predv,
-        color=clrv,
-        markersize=15,
-        strokecolor=:black,
-        strokewidth=1)
-    ablines!(ax3, 0, 1,
-        color=:black,
-        linewidth=5)
-    ablines!(ax,0,1)
-    ablines!(ax7,0,1)
-end
-f
+    scatter!(ax3, x2[:], y[:], color=clr)
+    scatter!(ax2, x3[:], y[:], color=clr)
+    lines!(ax3, xt, yt, color=:black, linewidth=5)
+    lines!(ax2, xt, yt, color=:black, linewidth=5)
+    limits!(ax2, 0, nothing, 0, nothing)
+    limits!(ax3, 0, nothing, 0, nothing)
+    elem_1 = MarkerElement(color = :grey, marker = :circle, markersize = 15)
+    elem_2 = MarkerElement(color = :orange, marker = :circle, markersize = 15)
+    Legend(gl3[1,2], [elem_1, elem_2], ["Fucose", "Rare"])
+    colgap!(f.layout,3,30)
+    colsize!(f.layout,3,320)
+    # D
+    scatterlines!(ax4, 1:7, r2[:, 1], label="training", color="grey", linewidth=5, markersize=20)
+    scatterlines!(ax4, 1:7, r2[:, 2], label="verification", color="blue", linewidth=5, markersize=20)
+    limits!(ax4, 0, 8, 0, 1)
+    axislegend(ax4; position=:rb)
 
-
-sm2 = strain_mat[sum(strain_mat,dims=2)[:] .> 1, :]
-o = [Matrix{Float64}(undef,0,2) for _ in axes(par2,1)]
-for i in axes(sm2,1)
-    js = findall(sm2[i,:])
-    # c1 = hill1(sum(par2[js,1]), par1)
-    # r1 = hill1(sum(par2[js,2]), par1)
-    c1 = sum(par2[js,1])
-    r1 = sum(par2[js,2])
-        for j1 in js
-            # c2 = hill1(sum(par2[setdiff(js,j1),1]), par1)
-            # r2 = hill1(sum(par2[setdiff(js,j1),2]), par1)
-            c2 = par2[j1,1]
-            r2 = par2[j1,2]
-            # v1 = c1>0 ? 1 - (c2/c1) : 0
-            # v2 = r1>0 ? 1 - (r2/r1) : 0
-            v1 = c1>0 ? c2/c1 : 0.0
-            v2 = r1>0 ? r2/r1 : 0.0
-            o[j1] = [o[j1]; v1 v2]
-        end
-end
-
-begin
-    f = Figure(size=(400,1000))
-    axs = [Axis(f[i,1], aspect=4, title=strains[i]) for i in eachindex(o)]
-    ss = .02
-    for i in eachindex(o)
-        od = o[i]
-        if length(unique(od[:,1]))>1
-            hist!(axs[i],od[:,1], color=:black,bins=-ss/2:ss:1)
-        end
-        if length(unique(od[:,2]))>1
-            hist!(axs[i],od[:,2], color=(:orange,.85),bins=-ss/2:ss:1)
-        end
+    for (label, layout) in zip(["A", "B", "C", "D"], [gl1, gl2, gl3, gl4])
+        Label(layout[1, 1, TopLeft()], label,
+            fontsize = 26,
+            font = :bold,
+            padding = (0, 50, 5, 0),
+            halign = :right)
     end
-end
-f
 
-x = sum(strain_mat,dims=2)[:]
-xt = strain_mat * par2
-xth = hill1(xt,par1)
-i = sum(strain_mat,dims=2)[:].<=10
-scatter(xth[i,1],y[i,1],strokewidth=1)
-scatter!(xth[i,2],y[i,2],strokewidth=1)
+end;
 
-scatter(x,y[:,1], strokewidth=1)
+using CairoMakie
+CairoMakie.activate!()
+save("model.pdf",f; size=(1500, 400))
+
